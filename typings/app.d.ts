@@ -156,3 +156,22 @@ declare var StringJS: {(o: any): StringJS};
 
 
 
+declare module Reflect {
+    function apply(target: Function, thisArgument: any, argumentsList: ArrayLike<any>): any;
+    function construct(target: Function, argumentsList: ArrayLike<any>): any;
+    function getMetadata(annotations:string, constructor:any):any;
+    function defineProperty(target: any, any: any, attributes: PropertyDescriptor): boolean;
+    function deleteProperty(target: any, any: any): boolean;
+    function get(target: any, any: any, receiver?: any): any;
+    function getOwnPropertyDescriptor(target: any, any: any): PropertyDescriptor;
+    function getPrototypeOf(target: any): any;
+    function has(target: any, any: any): boolean;
+    function isExtensible(target: any): boolean;
+    function ownKeys(target: any): Array<any>;
+    function preventExtensions(target: any): boolean;
+    function set(target: any, any: any, value: any, receiver?: any): boolean;
+    function setPrototypeOf(target: any, proto: any): boolean;
+}
+
+declare var Component:any;
+declare var bootbox:any;
