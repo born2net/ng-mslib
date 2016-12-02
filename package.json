@@ -1,0 +1,67 @@
+{
+    "name": "ng-mslib",
+    "version": "0.1.25",
+    "description": "MediaSignage general Angular lib",
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts",
+    "scripts": {
+        "lint": "tslint src/**/*.ts -s node_modules/tslint-stylish -t stylish",
+        "commit": "git-cz",
+        "build & copy": "npm run build && cp -r -f ./src/ ../msbarcode/node_modules/ng-mslib/ && cp -r -f ./dist/ ../msbarcode/node_modules/ng-mslib/",
+        "clean": "rimraf dist ",
+        "build": "tsc --outDir dist --declaration",
+        "build-and-test": "npm run clean && npm run lint && npm run test && npm run build",
+        "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+        "complete": "gulp bump && npm run build && npm publish ./"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/born2net/ng-mslib.git"
+    },
+    "keywords": [
+        "angular",
+        "angular2",
+        "angular 2"
+    ],
+    "author": "Sean Levy <born2net@gmail.com",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/born2net/ng-mslib"
+    },
+    "homepage": "https://github.com/born2net/ng-mslib#readme",
+    "peerDependencies": {},
+    "devDependencies": {
+        "commitizen": "^2.4.6",
+        "cz-conventional-changelog": "^1.1.5",
+        "ghooks": "^1.0.1",
+        "gulp-bump": "^1.0.0",
+        "gulp-tslint": "^4.2.2",
+        "redux": "^3.x",
+        "rimraf": "^2.4.4",
+        "semantic-release": "^4.3.5",
+        "tsc": "^1.20150623.0",
+        "tslint": "^3.2.1",
+        "tslint-stylish": "^2.1.0-beta",
+        "typescript": "^2.1.1"
+    },
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-conventional-changelog"
+        },
+        "ghooks": {
+            "pre-commit": "npm run build-and-test"
+        }
+    },
+    "directories": {
+        "test": "test"
+    },
+    "dependencies": {
+        "@types/lodash": "^4.14.41",
+        "immutable": "^3.7.6",
+        "is-equal": "^1.4.2",
+        "lodash": "^4.17.2",
+        "object-path": "^0.9.2",
+        "string": "^3.3.3",
+        "typescript": "^2.1.1"
+    }
+}
