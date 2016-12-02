@@ -13,6 +13,7 @@ import * as Immutable from 'immutable'
 import * as ss from 'string';
 import * as _ from 'lodash';
 
+
 export class Ngmslib {
 
     private store: any;
@@ -24,7 +25,7 @@ export class Ngmslib {
     constructor(store: any) {
         this.store = store;
         this.replaceReducer = (n) => {
-            console.log('DDDD ' + n + ' ' + _.random(1,10000));
+            console.log('EEEE ' + n + ' ' + _.random(1,10000));
             return n;
         };
     }
@@ -34,12 +35,13 @@ export class Ngmslib {
         return a;
     }
 
-    static testAAA(a: string): string {
-        console.log('lib3 ' + a);
+    static Cap(a: string): string {
+        console.log(StringJS(a).capitalize().s);
         return a;
     }
 }
 
+export declare module StringJS {}
 
 
 /***********************************
@@ -48,6 +50,7 @@ export class Ngmslib {
  *
  ***********************************/
 // window['StringJS'] = ss.default;
+
 MyS.prototype = ss('')
 MyS.prototype.constructor = MyS;
 function MyS(val) {
@@ -175,6 +178,7 @@ window['StringJS'] = function (str) {
     return new MyS(str);
 }
 
+export var StringJS:{(o: any): StringJS} = window['StringJS'];
 
 
 
