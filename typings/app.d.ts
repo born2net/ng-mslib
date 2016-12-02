@@ -1,17 +1,3 @@
-declare module 'is-equal' {
-}
-
-declare module 'object-path' {
-    var get;
-}
-
-declare module 'is-equal' {
-}
-
-declare module 'object-path' {
-    var get;
-}
-
 
 interface StringJS {
 
@@ -148,13 +134,20 @@ interface StringJS {
     toCurrency(format?:'us'|'eu'):StringJS;
 
     toPercent():StringJS;
+    toPercent2():StringJS;
 }
-
-
+type StringJSType = {(o: any): StringJS};
+declare module "string" {
+    var S: {
+        (o: any): StringJS;
+        default: StringJSType,
+        VERSION: string;
+        TMPL_OPEN: string;
+        TMPL_CLOSE: string;
+    }
+    export = S;
+}
 declare var StringJS: {(o: any): StringJS};
-
-
-
 
 declare module Reflect {
     function apply(target: Function, thisArgument: any, argumentsList: ArrayLike<any>): any;
@@ -175,3 +168,5 @@ declare module Reflect {
 
 declare var Component:any;
 declare var bootbox:any;
+
+
