@@ -1,7 +1,3 @@
-/**
- * Wrapper for app store
- */
-
 ///<reference path="../typings/app.d.ts"/>
 
 // declare function require(path:any):any;
@@ -13,14 +9,15 @@ import * as Immutable from 'immutable'
 import * as ss from 'string';
 import * as _ from 'lodash';
 
-
+/***********************************
+ *
+ * Ngmslib help class
+ *
+ ***********************************/
 
 export class Ngmslib {
 
     private store: any;
-    /**
-     * Create a dispatcher as a curried function using the passed in action creator and an optional context
-     */
     public replaceReducer: (n) => void;
 
     constructor(store: any) {
@@ -59,7 +56,6 @@ export declare module StringJS {}
  *
  ***********************************/
 // window['StringJS'] = ss.default;
-
 MyS.prototype = ss('')
 MyS.prototype.constructor = MyS;
 function MyS(val) {
