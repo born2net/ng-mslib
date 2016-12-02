@@ -24,7 +24,7 @@ export class Ngmslib {
     constructor(store: any) {
         this.store = store;
         this.replaceReducer = (n) => {
-            console.log('BBB ' + n + ' ' + _.random(1,10000));
+            console.log('DDDD ' + n + ' ' + _.random(1,10000));
             return n;
         };
     }
