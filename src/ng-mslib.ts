@@ -14,6 +14,7 @@ import * as ss from 'string';
 import * as _ from 'lodash';
 
 
+
 export class Ngmslib {
 
     private store: any;
@@ -33,6 +34,14 @@ export class Ngmslib {
     static Testing(a: string): string {
         console.log('lib2 ' + a);
         return a;
+    }
+
+    static GlobalizeStringJS(){
+        window['StringJS'] = function (str) {
+            if (_.isNull(str) || _.isUndefined(str))
+                str = '';
+            return new MyS(str);
+        }
     }
 
     static Cap(a: string): string {
@@ -172,13 +181,9 @@ MyS.prototype.cleanChar = function () {
     return value;
 }
 
-window['StringJS'] = function (str) {
-    if (_.isNull(str) || _.isUndefined(str))
-        str = '';
-    return new MyS(str);
-}
 
-export var StringJS:{(o: any): StringJS} = window['StringJS'];
+
+
 
 
 
