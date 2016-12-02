@@ -1,15 +1,9 @@
 ///<reference path="../typings/app.d.ts"/>
 
-// declare function require(path:any):any;
-// var isEqual = require('is-equal');
-// var Immutable = require('immutable');
-// var getValue = require('object-path').get;
-
 import {List, Map} from 'immutable';
 import * as ss from 'string';
 import * as _ from 'lodash';
 import * as moment_ from "moment";
-// import * as Immutable from "~immutable/immutable";
 import * as Immutable from "immutable";
 export const moment = moment_["default"];
 
