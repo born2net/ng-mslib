@@ -169,4 +169,10 @@ declare module Reflect {
 declare var Component:any;
 declare var bootbox:any;
 
+declare class  ActiveXObject {
+    constructor(a:any);
+    async;
+    loadXML;
+}
+
 

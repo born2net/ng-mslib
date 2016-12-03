@@ -1,8 +1,9 @@
 node_modules
-npm-debug.log
+npm-debug*
 
 *.iml
 .idea/
+dist/
 src/**/*.js
 src/**/*.js.map
 src/**/*.d.ts
