@@ -1,3 +1,4 @@
 # we don't need to distribue /src typescript files since we are delivering .js and .d.ts via tsc --outDir dist --declaration flags
-/src
+# unless you want to work on src .ts files in node_modules dir so you can uncomment
+# /src
 .idea
