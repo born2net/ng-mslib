@@ -10,7 +10,7 @@ import {Component} from "@angular/core";
 
 export class MyNgComp {
     constructor() {
-        alert('v81');
+        console.log('myng-component v85');
         console.log('Hello from MyNgComp')
     }
 

@@ -1,67 +1,72 @@
 {
-    "name": "ng-mslib",
-    "version": "0.1.155",
-    "description": "MediaSignage general Angular lib",
-    "main": "dist/index.js",
-    "typings": "dist/index.d.ts",
-    "scripts": {
-        "lint": "tslint src/**/*.ts -s node_modules/tslint-stylish -t stylish",
-        "commit": "git-cz",
-        "build & copy": "npm run build && cp -r -f ./src/ ../msbarcode/node_modules/ng-mslib/ && cp -r -f ./dist/ ../msbarcode/node_modules/ng-mslib/",
-        "clean": "rimraf dist ",
-        "build": "tsc --outDir dist --declaration --sourcemap",
-        "rm_dist": "rm -r -f ./dist/",
-        "build-and-test": "npm run clean && npm run lint && npm run test && npm run build",
-        "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-        "complete": "npm run rm_dist && gulp bump && npm run build && npm publish ./"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/born2net/ng-mslib.git"
-    },
-    "keywords": [
-        "angular",
-        "angular2",
-        "angular 2"
-    ],
-    "author": "Sean Levy <born2net@gmail.com",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/born2net/ng-mslib"
-    },
-    "angular-cli": {},
-    "dependencies": {
-        "@angular/common": "2.2.1",
-        "@angular/compiler": "2.2.1",
-        "@angular/core": "2.2.1",
-        "@angular/forms": "2.2.1",
-        "@angular/http": "2.2.1",
-        "@angular/platform-browser": "2.2.1",
-        "@angular/platform-browser-dynamic": "2.2.1",
-        "@angular/router": "3.2.1",
-        "core-js": "^2.4.1",
-        "gulp": "^3.9.1",
-        "rxjs": "5.0.0-beta.12",
-        "ts-helpers": "^1.1.1",
-        "zone.js": "^0.6.23"
-    },
-    "devDependencies": {
-        "@angular/compiler-cli": "2.2.1",
-        "@types/jasmine": "2.5.38",
-        "@types/node": "^6.0.42",
-        "angular-cli": "1.0.0-beta.21",
-        "codelyzer": "~1.0.0-beta.3",
-        "jasmine-core": "2.5.2",
-        "jasmine-spec-reporter": "2.5.0",
-        "karma": "1.2.0",
-        "karma-chrome-launcher": "^2.0.0",
-        "karma-cli": "^1.0.1",
-        "karma-jasmine": "^1.0.2",
-        "karma-remap-istanbul": "^0.2.1",
-        "protractor": "4.0.9",
-        "ts-node": "1.2.1",
-        "tslint": "3.13.0",
-        "typescript": "~2.0.3",
-        "webdriver-manager": "10.2.5"
-    }
+  "name": "ng-mslib",
+  "version": "0.1.160",
+  "description": "MediaSignage general Angular lib",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "lint": "tslint src/**/*.ts -s node_modules/tslint-stylish -t stylish",
+    "commit": "git-cz",
+    "build & copy": "npm run build && cp -r -f ./src/ ../msbarcode/node_modules/ng-mslib/ && cp -r -f ./dist/ ../msbarcode/node_modules/ng-mslib/",
+    "clean": "rimraf dist ",
+    "build": "tsc --outDir dist --declaration --sourcemap",
+    "rm_dist": "rm -r -f ./dist/",
+    "build-and-test": "npm run clean && npm run lint && npm run test && npm run build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "complete": "npm run rm_dist && gulp bump && npm run build && npm publish ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/born2net/ng-mslib.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular 2"
+  ],
+  "author": "Sean Levy <born2net@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/born2net/ng-mslib"
+  },
+  "angular-cli": {},
+  "dependencies": {
+    "@angular/common": "2.2.1",
+    "@angular/compiler": "2.2.1",
+    "@angular/core": "2.2.1",
+    "@angular/forms": "2.2.1",
+    "@angular/http": "2.2.1",
+    "@angular/platform-browser": "2.2.1",
+    "@angular/platform-browser-dynamic": "2.2.1",
+    "@angular/router": "3.2.1",
+    "core-js": "^2.4.1",
+    "gulp": "^3.9.1",
+    "rxjs": "5.0.0-beta.12",
+    "ts-helpers": "^1.1.1",
+    "zone.js": "^0.6.23"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "2.2.1",
+    "@types/jasmine": "2.5.38",
+    "@types/lodash": "^4.14.43",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^6.0.42",
+    "angular-cli": "1.0.0-beta.21",
+    "codelyzer": "~1.0.0-beta.3",
+    "gulp-bump": "^2.5.1",
+    "jasmine-core": "2.5.2",
+    "jasmine-spec-reporter": "2.5.0",
+    "karma": "1.2.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-remap-istanbul": "^0.2.1",
+    "lodash": "^4.17.2",
+    "moment": "^2.17.1",
+    "protractor": "4.0.9",
+    "ts-node": "1.2.1",
+    "tslint": "3.13.0",
+    "typescript": "~2.0.3",
+    "webdriver-manager": "10.2.5"
+  }
 }
