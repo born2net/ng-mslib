@@ -2,3 +2,4 @@
 # unless you want to work on src .ts files in node_modules dir so you can uncomment
 # /src
 .idea
+local.d.ts

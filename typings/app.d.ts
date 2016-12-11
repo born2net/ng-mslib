@@ -166,8 +166,7 @@ declare module Reflect {
     function setPrototypeOf(target: any, proto: any): boolean;
 }
 
-declare var Component:any;
-declare var bootbox:any;
+//declare var Component:any;
 
 declare class  ActiveXObject {
     constructor(a:any);

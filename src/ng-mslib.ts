@@ -5,6 +5,7 @@ import * as ss from 'string';
 import * as _ from 'lodash';
 import * as moment_ from "moment";
 import * as Immutable from "immutable";
+import {Component} from "@angular/core";
 export const moment = moment_["default"];
 
 /***********************************
@@ -168,12 +169,12 @@ export class Ngmslib {
         return i_value;
     }
 
-    static GetCompSelector(i_constructor, i_ngComponent) {
+    static GetCompSelector(i_constructor) {
         if (!Ngmslib.DevMode())
             return;
         var annotations = Reflect.getMetadata('annotations', i_constructor);
         var componentMetadata = annotations.find(annotation => {
-            return (annotation instanceof i_ngComponent);
+            return (annotation instanceof Component);
         });
         return componentMetadata.selector;
     }
