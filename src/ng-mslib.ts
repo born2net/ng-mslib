@@ -6,6 +6,7 @@ import * as _ from 'lodash';
 import * as moment_ from "moment";
 import * as Immutable from "immutable";
 import {Component} from "@angular/core";
+import {Observable} from "rxjs";
 export const moment = moment_["default"];
 
 /***********************************
@@ -149,6 +150,16 @@ export class Ngmslib {
         if (key == 'hourStart')
             return `${value}:00`;
         return `${value}:59`;
+    }
+
+    static Staggered(list:List<any>, delay: number): Observable<any> {
+        return Observable.zip(
+            Observable.from(<any>list),
+            Observable.interval(delay),
+            (x, y) => {
+                return x;
+            })
+            .scan((acc: any, x) => acc.concat(x), [])
     }
 
     /**
