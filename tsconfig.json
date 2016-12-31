@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
     "baseUrl": "",
-    "declaration": false,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
     "mapRoot": "./",
     "module": "es6",
     "moduleResolution": "node",
-    "outDir": "../dist/out-tsc",
+    "outDir": "dist",
     "sourceMap": true,
     "target": "es5",
+    "paths": {
+      "@angular/core": ["node_modules/@angular/core"],
+      "rxjs/*": ["node_modules/rxjs/*"]
+    },
     "typeRoots": [
       "../node_modules/@types"
     ]
