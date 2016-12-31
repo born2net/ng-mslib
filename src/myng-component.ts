@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 
 @Component({
     template: `
-           <h2>MyNgComp v2</h2>
+           <h4>MyNgComp v6</h4>
            `,
     selector: 'MyNgComp',
 })
