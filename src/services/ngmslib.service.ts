@@ -1,4 +1,4 @@
-///<reference path="../typings/app.d.ts"/>
+import {Injectable} from "@angular/core";
 
 import {List, Map} from 'immutable';
 import * as ss from 'string';
@@ -9,38 +9,19 @@ import {Component} from "@angular/core";
 import {Observable} from "rxjs";
 export const moment = moment_["default"];
 
-/***********************************
- *
- * Ngmslib help class
- *
- ***********************************/
-
-export class Ngmslib {
-
-    private store: any;
-    public replaceReducer: (n) => void;
-
-    constructor(store: any) {
-        this.store = store;
-        this.replaceReducer = (n) => {
-            return n;
-        };
+@Injectable()
+export class NgmslibService {
+    constructor() {
+        console.log('NgmslibService constructed');
     }
 
-    static GlobalizeStringJS(){
-        window['StringJS'] = function (str) {
-            if (_.isNull(str) || _.isUndefined(str))
-                str = '';
-            return new MyS(str);
+    public inDevMode(): boolean {
+        if (window.location.href.indexOf('localhost') > -1) {
+            return true;
+        } else {
+            return false;
         }
     }
-
-    static Cap(a: string): string {
-        console.log(StringJS(a).capitalize().s);
-        return a;
-    }
-
-
 
     /**
      *
@@ -48,7 +29,7 @@ export class Ngmslib {
      * @returns {any}
      * @constructor
      */
-    static ProcessDateField(dateString: string, addDay: boolean = false): any {
+    processDateField(dateString: string, addDay: boolean = false): any {
         if (_.isUndefined(dateString))
             return '';
         var epoc = dateString.match(/Date\((.*)\)/)
@@ -78,7 +59,7 @@ export class Ngmslib {
      * @returns {any}
      * @constructor
      */
-    static ProcessDateFieldToUnix(dateString: string, addDay: boolean = false): any {
+    processDateFieldToUnix(dateString: string, addDay: boolean = false): any {
         if (_.isUndefined(dateString))
             return '';
         //todo: adding +1 on save to server hack, need to ask Alon
@@ -89,7 +70,7 @@ export class Ngmslib {
         }
     }
 
-    static CleanCharForXml(value: any): any {
+    cleanCharForXml(value: any): any {
         var clean = function (value: string) {
             if (_.isUndefined(value))
                 return '';
@@ -134,11 +115,11 @@ export class Ngmslib {
         return value;
     }
 
-    static UnionList(a: List<any>, b: List<any>) {
+    unionList(a: List<any>, b: List<any>) {
         return a.toSet().union(b.toSet()).toList();
     }
 
-    static ProcessHourStartEnd(value: string, key: string): any {
+    processHourStartEnd(value: string, key: string): any {
         if (_.isUndefined(!value))
             return '';
         if (key == 'hourStart')
@@ -146,7 +127,7 @@ export class Ngmslib {
         return `${value}:59`;
     }
 
-    static Staggered(list:List<any>, delay: number): Observable<any> {
+    staggered(list: List<any>, delay: number): Observable<any> {
         return Observable.zip(
             Observable.from(<any>list),
             Observable.interval(delay),
@@ -163,10 +144,10 @@ export class Ngmslib {
      * @returns {number}
      * @constructor
      */
-    static CheckFoundIndex(i_value: number, i_message: string = 'CheckFoundIndex did not find index'): number {
+    checkFoundIndex(i_value: number, i_message: string = 'CheckFoundIndex did not find index'): number {
         if (i_value === -1) {
             console.log(i_message);
-            if (Ngmslib.DevMode()) {
+            if (this.inDevMode()) {
                 alert(i_message);
                 throw Error(i_message);
             }
@@ -174,8 +155,8 @@ export class Ngmslib {
         return i_value;
     }
 
-    static GetCompSelector(i_constructor) {
-        if (!Ngmslib.DevMode())
+    getCompSelector(i_constructor) {
+        if (!this.inDevMode())
             return;
         var annotations = Reflect.getMetadata('annotations', i_constructor);
         var componentMetadata = annotations.find(annotation => {
@@ -184,17 +165,17 @@ export class Ngmslib {
         return componentMetadata.selector;
     }
 
-    static BootboxHide(i_time = 1500) {
+    bootboxHide(i_time = 1500) {
         setTimeout(() => {
             bootbox.hideAll();
         }, i_time)
     }
 
-    static DateToAbsolute(year, month) {
+    dateToAbsolute(year, month) {
         return year * 12 + month;
     }
 
-    static DateFromAbsolute(value: number) {
+    dateFromAbsolute(value: number) {
         var year = Math.floor(value / 12);
         var month = value % 12 + 1;
         return {
@@ -203,7 +184,7 @@ export class Ngmslib {
         }
     }
 
-    static MapOfIndex(map: Map<string,any>, index: number, position: "first" | "last"): string {
+    mapOfIndex(map: Map<string,any>, index: number, position: "first" | "last"): string {
         var mapJs = map.toJS();
         var mapJsPairs = _.toPairs(mapJs);
         var offset = position == 'first' ? 0 : 1;
@@ -228,7 +209,7 @@ export class Ngmslib {
      * @constructor
      */
 
-    static Base64() {
+    base64() {
 
         var _PADCHAR = "=", _ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/", _VERSION = "1.0";
 
@@ -349,7 +330,7 @@ export class Ngmslib {
     }
 
 
-    static ConstructImmutableFromTable(path): Array<any> {
+    constructImmutableFromTable(path): Array<any> {
         var arr = [];
         path.forEach((member) => {
             var obj = {};
@@ -369,7 +350,7 @@ export class Ngmslib {
         return arr;
     }
 
-    static ComputeMask(accessMask): number {
+    computeMask(accessMask): number {
         var bits = [1, 2, 4, 8, 16, 32, 64, 128];
         var computedAccessMask = 0;
         accessMask.forEach(value => {
@@ -380,7 +361,7 @@ export class Ngmslib {
         return computedAccessMask;
     }
 
-    static GetAccessMask(accessMask): List<any> {
+    getAccessMask(accessMask): List<any> {
         var checks = List();
         var bits = [1, 2, 4, 8, 16, 32, 64, 128];
         for (var i = 0; i < bits.length; i++) {
@@ -390,7 +371,7 @@ export class Ngmslib {
         return checks;
     }
 
-    static GetADaysMask(accessMask): List<any> {
+    getADaysMask(accessMask): List<any> {
         var checks = List();
         var bits = [1, 2, 4, 8, 16, 32, 64];
         for (var i = 0; i < bits.length; i++) {
@@ -400,11 +381,11 @@ export class Ngmslib {
         return checks;
     }
 
-    static log(msg) {
+    log(msg) {
         console.log(new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1") + ': ' + msg);
     }
 
-    static guid(): string {
+    guid(): string {
         function s4() {
             return Math.floor((1 + Math.random()) * 0x10000)
                 .toString(16)
@@ -414,158 +395,10 @@ export class Ngmslib {
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
     }
 
-    static ReduxLoggerMiddleware = store => next => action => {
-        // console.log("dispatching", action.type);
-        let result = next(action);
-        //console.log("next state", store.getState());
-        return result
-    };
 
-    static DevMode(): boolean {
-        if (window.location.href.indexOf('localhost') > -1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    static GetSamples(): Object {
-        return {
-            1019: 'Sushi Restaurant,pro',
-            1029: 'food menu board,pro',
-            1007: 'Home and Garden,pro',
-            1009: 'Hotel Lobby,pro',
-            1016: 'Coffee Shop,pro',
-            1011: 'Hobby Shop,pro',
-            1013: 'Sports Bar,pro',
-            1014: 'Museum,pro',
-            1017: 'Bank,pro',
-            1018: 'Gas Station,pro',
-            1020: 'Casino,pro',
-            1000: 'Travel,pro',
-            1021: 'Bicycle Shop,pro',
-            1022: 'Tanning Salon,pro',
-            1023: 'Pharmacy,pro',
-            1024: 'Laser Away,pro',
-            1025: 'Dentistry,pro',
-            1026: 'Clothing store,pro',
-            1027: 'Golf club,pro',
-            1028: 'RC Heli,pro',
-            1030: 'seven eleven,pro',
-            1031: 'Subway,pro',
-            1032: 'Super market,pro',
-            1033: 'Investment Group,pro',
-            1035: 'Synagogue,pro',
-            1036: 'Dry Cleaning,pro',
-            1037: 'Ice Cream Shop,pro',
-            1038: 'Real Estate office,pro',
-            1039: 'Night Club,pro',
-            1040: 'Hockey,pro',
-            1041: 'Train Station,pro',
-            1042: 'Realtor,pro',
-            1043: 'Toy Store,pro',
-            1044: 'Indian Restaurant,pro',
-            1045: 'Library,pro',
-            1046: 'Movie Theater,pro',
-            1047: 'Airport,pro',
-            1048: 'LAX,pro',
-            100310: 'Motel,pro',
-            100301: 'Parks and Recreations,pro',
-            100322: 'Corner Bakery,pro',
-            100331: 'Retirement home,pro',
-            100368: 'Navy recruiting office,pro',
-            100397: 'Martial arts school,pro',
-            100414: 'Supercuts,pro',
-            100432: 'The UPS Store,pro',
-            100438: 'Cruise One,pro',
-            100483: 'Car service,pro',
-            100503: 'fedex kinkos,pro',
-            100510: 'veterinarian,pro',
-            100556: 'YMCA,pro',
-            100574: 'Tax services,pro',
-            100589: 'Wedding planner,pro',
-            100590: 'Cleaning services,pro',
-            100620: 'Pet Training,pro',
-            100661: 'Gymboree Kids,pro',
-            100677: 'Trader Joes,pro',
-            100695: 'Men Haircuts,pro',
-            100722: 'Jiffy Lube,pro',
-            100738: 'Toyota  car dealer,pro',
-            100747: 'Winery,pro',
-            100771: 'Savings and Loans,pro',
-            100805: 'Nail Salon,pro',
-            100822: 'Weight Watchers,pro',
-            100899: 'Dollar Tree,pro',
-            100938: 'Western Bagles,pro',
-            100959: 'Kaiser Permanente,pro',
-            300143: 'Funeral home,pro',
-            205734: 'Church,pro',
-            220354: 'College,pro',
-            206782: 'Dr Waiting Room,pro',
-            300769: 'NFL Stadium,pro',
-            301814: 'University Campus,pro',
-            303038: 'Day care,pro',
-            304430: 'GameStop,pro',
-            307713: 'Del Taco,pro',
-            305333: 'General Hospital,pro',
-            305206: 'Starbucks,pro',
-            308283: 'training and fitness,pro',
-            311519: 'High school hall,pro',
-            309365: 'Winery,pro',
-            310879: 'Law Firm,pro',
-            1001: 'Health Club,pro',
-            1002: 'Gym,pro',
-            1003: 'Flower Shop,pro',
-            1004: 'Car Dealership,pro',
-            1012: 'Pet Shop,pro',
-            1005: 'Hair Salon,pro',
-            1209: 'Motorcycle shop,lite',
-            1210: 'Sushi and Grill,lite',
-            1211: 'the Coffee Shop,lite',
-            1212: 'Pizzeria,lite',
-            1213: 'Music Store,lite',
-            1214: 'Diner,lite',
-            1215: 'the Hair Salon,lite',
-            1216: 'Dentist,lite',
-            1203: 'Jewelry,lite',
-            1217: 'Crossfit,lite',
-            1218: 'Copy and Print shop,lite',
-            1219: 'Antique Store,lite',
-            1220: 'Clock Repair Store,lite',
-            1221: 'Eastern Cuisine,lite',
-            1222: 'the Toy Store,lite',
-            1223: 'Pet Store Grooming,lite',
-            1224: 'the Veterinarian,lite',
-            1225: 'Tattoo Parlor,lite',
-            1226: 'Camera Store,lite',
-            1228: 'Bike shop,lite',
-            1229: 'Gun Shop,lite',
-            1230: 'Chiropractic Clinic,lite',
-            1231: 'French Restaurant,lite',
-            1233: 'Winery,lite',
-            1232: 'Mexican Taqueria,lite',
-            1234: 'Bistro Restaurant,lite',
-            1235: 'Vitamin Shop,lite',
-            1227: 'Tailor Shop,lite',
-            1236: 'Computer Repair,lite',
-            1237: 'Car Detail,lite',
-            1238: 'Asian Restaurants,lite',
-            1239: 'Marijuana Dispensary,lite',
-            1240: 'the Church,lite',
-            1241: 'Synagogue,lite',
-            1242: 'Frozen Yogurt Store,lite',
-            1244: 'Baby Day Care,lite',
-            1052: 'Car wash,lite',
-            1053: 'Smoke shop,lite',
-            1054: 'Yoga place,lite',
-            1055: 'Laundromat,lite',
-            1056: 'Baby clothes,lite',
-            1057: 'Travel agency,lite',
-            1058: 'Real Estate agent,lite'
-        }
-    }
 
-    static Xml2Json() {
+    xml2Json() {
         //https://github.com/metatribal/xmlToJSON
         var xmlToJSON = (function () {
 
@@ -786,144 +619,4 @@ export class Ngmslib {
         return xmlToJSON;
     }
 }
-
-export declare module StringJS {}
-
-
-/***********************************
- *
- * StringJS() library extension
- *
- ***********************************/
-// window['StringJS'] = ss.default;
-MyS.prototype = ss('')
-MyS.prototype.constructor = MyS;
-function MyS(val) {
-    this.setValue(val);
-}
-//
-var formatMoney = function(n, c, d, t){
-    var c = isNaN(c = Math.abs(c)) ? 2 : c,
-        d = d == undefined ? "." : d,
-        t = t == undefined ? "," : t,
-        s = n < 0 ? "-" : "",
-        i:any = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
-        j = (j = i.length) > 3 ? j % 3 : 0;
-    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
-};
-
-MyS.prototype.isBlank = function () {
-    var value = this.s;
-    if (_.isNaN(value))
-        return true;
-    if (_.isUndefined(value))
-        return true;
-    if (_.isNull(value))
-        return true;
-    if (_.isEmpty(String(value)))
-        return true;
-    return false;
-}
-
-MyS.prototype.isNotBlank = function () {
-    var value = this.s;
-    if (_.isNaN(value))
-        return false;
-    if (_.isUndefined(value))
-        return false;
-    if (_.isNull(value))
-        return false;
-    if (_.isEmpty(String(value)))
-        return false;
-    return true;
-}
-
-/**
- *  booleanToNumber
- *  convert boolean to a number 0 or 1
- *  if forceCast is true, it will always return a number, else it will alow strings to pass through it
- * @param forceCast
- * @returns {any}
- */
-MyS.prototype.booleanToNumber = function (forceCasting: boolean = false) {
-    var value = this.s;
-    if (value == '')
-        return 0;
-    if (_.isUndefined(value) || _.isNull(value) || value == 'NaN' || value == 'null' || value == 'NULL')
-        return 0;
-    if (value === "0" || value === 'false' || value === "False" || value === false)
-        return 0;
-    if (value === 1 || value === "true" || value === "True" || value === true)
-        return 1;
-    if (forceCasting) {
-        return parseInt(value);
-    } else {
-        return value;
-    }
-}
-
-MyS.prototype.toCurrency = function (format?: 'us'|'eu') {
-
-    var value = StringJS(this.s).toFloat(2);
-    if (_.isNaN(value))
-        value = 0;
-    switch (format) {
-        case 'eu': {
-            return '€' + formatMoney(value, 2, '.', ',');
-        }
-        case 'us': {}
-        default: {
-            return '$' + formatMoney(value, 2, '.', ',');
-        }
-    }
-}
-
-MyS.prototype.toPercent = function () {
-    return StringJS(this.s).toFloat(2) + '%';
-}
-MyS.prototype.toPercent2 = function () {
-    return StringJS(this.s).toFloat(2) + '%';
-}
-
-MyS.prototype.fileTailName = function (i_level) {
-    var fileName = this.s;
-    var arr = fileName.split('/');
-    var size = arr.length;
-    var c = arr.slice(0 - i_level, size)
-    return new this.constructor(c.join('/'));
-}
-
-MyS.prototype.cleanChar = function () {
-    var value = this.s;
-    if (_.isUndefined(value))
-        return '';
-    if (_.isNull(value))
-        return '';
-    if (_.isNumber(value))
-        return value;
-    if (_.isBoolean(value))
-        return value;
-    value = value.replace(/\}/g, ' ');
-    value = value.replace(/%/g, ' ');
-    value = value.replace(/{/g, ' ');
-    value = value.replace(/"/g, '`');
-    value = value.replace(/'/g, '`');
-    value = value.replace(/&/g, 'and');
-    value = value.replace(/>/g, ' ');
-    value = value.replace(/</g, ' ');
-    value = value.replace(/\[/g, ' ');
-    value = value.replace(/]/g, ' ');
-    value = value.replace(/#/g, ' ');
-    value = value.replace(/\$/g, ' ');
-    value = value.replace(/\^/g, ' ');
-    value = value.replace(/;/g, ' ');
-    return value;
-}
-
-
-
-
-
-
-
 
