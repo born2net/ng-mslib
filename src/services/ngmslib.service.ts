@@ -166,16 +166,6 @@ export class NgmslibService {
         return i_value;
     }
 
-    getCompSelector(i_constructor) {
-        if (!this.inDevMode())
-            return;
-        var annotations = Reflect.getMetadata('annotations', i_constructor);
-        var componentMetadata = annotations.find(annotation => {
-            return (annotation instanceof Component);
-        });
-        return componentMetadata.selector;
-    }
-
     bootboxHide(i_time = 1500) {
         setTimeout(() => {
             bootbox.hideAll();
