@@ -17,8 +17,7 @@ export const MSLIB_DIRECTIVES: Array<any> = [MyNgComp, StringJSPipe];
 })
 
 export class MsLibModule {
-    static forRoot(): ModuleWithProviders {
-        Ngmslib.GlobalizeStringJS();
+    static forRoot(config:{}): ModuleWithProviders {
         return {
             ngModule: MsLibModule,
             providers: []

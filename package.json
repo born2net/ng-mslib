@@ -1,6 +1,6 @@
 {
   "name": "ng-mslib",
-  "version": "0.1.219",
+  "version": "0.1.261",
   "description": "MediaSignage general Angular lib",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -9,7 +9,7 @@
     "commit": "git-cz",
     "build & copy": "npm run build && cp -r -f ./src/ ../msbarcode/node_modules/ng-mslib/ && cp -r -f ./dist/ ../msbarcode/node_modules/ng-mslib/",
     "clean": "rimraf dist ",
-    "build": "npm run build_tsc",
+    "build": "npm run build_ngc",
     "build_tsc": "tsc",
     "build_ngc": "./node_modules/.bin/ngc.cmd -p ./tsconfig.json",
     "rm_dist": "rm -r -f ./dist/",
