@@ -2,7 +2,6 @@ import {NgModule, ModuleWithProviders} from "@angular/core";
 import {MyNgComp} from "./myng-component";
 import {StringJSPipe} from "./pipes/stringjs.pipe";
 import {CommonModule} from "@angular/common";
-import {Ngmslib} from "./ng-mslib";
 import {NgmslibService} from "./services/ngmslib.service";
 
 // if you were ever to add a provided Service feature, it needs to have it's own module,
