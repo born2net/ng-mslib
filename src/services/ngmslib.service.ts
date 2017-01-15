@@ -1,5 +1,6 @@
-import {Injectable} from "@angular/core";
+///<reference path="../../typings/app.d.ts"/>
 
+import {Injectable} from "@angular/core";
 import {List, Map} from 'immutable';
 import * as ss from 'string';
 import * as _ from 'lodash';
@@ -8,6 +9,8 @@ import * as Immutable from "immutable";
 import {Component} from "@angular/core";
 import {Observable} from "rxjs";
 export const moment = moment_["default"];
+
+export declare module StringJS {}
 
 @Injectable()
 export class NgmslibService {
@@ -632,7 +635,7 @@ export class NgmslibService {
 
 
 
-export declare module StringJS {}
+
 
 
 /***********************************
