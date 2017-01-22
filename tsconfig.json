@@ -23,7 +23,9 @@
     ]
   },
   "angularCompilerOptions": {
-    "strictMetadataEmit": true
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+
   }
 }
 
