@@ -15,7 +15,6 @@ export class Compbaser {
 
     constructor() {
         this.me = this.getCompSelector(this.constructor);
-        this.me = 'todo fix'
     }
 
     protected getCompSelector(i_constructor) {
