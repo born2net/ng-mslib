@@ -679,7 +679,7 @@ MyS.prototype.isNotBlank = function () {
 /**
  *  booleanToNumber
  *  convert boolean to a number 0 or 1
- *  if forceCast is true, it will always return a number, else it will alow strings to pass through it
+ *  if forceCast is true, it will always return a number, else it will allow strings to pass through it
  * @param forceCast
  * @returns {any}
  */
