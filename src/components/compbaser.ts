@@ -18,6 +18,13 @@ export class Compbaser {
     }
 
     protected getCompSelector(i_constructor) {
+
+        // in module: entryComponents: [TimelineProps],
+        // constructor(private resolver: ComponentFactoryResolver) {
+        //      let componentFactory = resolver.resolveComponentFactory(TimelineProps)
+        //      console.log(componentFactory.selector);
+        // }
+
         if (window.location.href.indexOf('localhost') == -1)
             return;
         var annotations = Reflect.getMetadata('annotations', i_constructor);
