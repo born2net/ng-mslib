@@ -1,5 +1,5 @@
 import {Subscriber} from "rxjs";
-import {Component} from "@angular/core";
+import {Component, HostListener} from "@angular/core";
 // import {
 //     Subscriber,
 //     Subject,
@@ -12,9 +12,22 @@ import {Component} from "@angular/core";
 export class Compbaser {
     private unsubFunctions: Array<any> = [];
     protected me = '';
+    private noRedirect:boolean = false;
+
+    @HostListener('click', ['$event'])
+    clickHandler(event) {
+        if (this.noRedirect){
+            event.stopImmediatePropagation();
+            event.preventDefault();
+        }
+    }
 
     constructor() {
         this.me = this.getCompSelector(this.constructor);
+    }
+
+    public preventRedirect(i_value:boolean){
+        this.noRedirect = i_value;    
     }
 
     protected getCompSelector(i_constructor) {

@@ -1,6 +1,6 @@
 {
   "name": "ng-mslib",
-  "version": "1.0.91",
+  "version": "1.0.99",
   "description": "MediaSignage general Angular lib",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
