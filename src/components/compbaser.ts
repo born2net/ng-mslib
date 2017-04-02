@@ -11,8 +11,9 @@ import {Component, HostListener} from "@angular/core";
 
 export class Compbaser {
     private unsubFunctions: Array<any> = [];
-    protected me = '';
     private noRedirect:boolean = false;
+    me = '';
+
 
     @HostListener('click', ['$event'])
     clickHandler(event) {
