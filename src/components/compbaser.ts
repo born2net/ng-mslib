@@ -42,6 +42,8 @@ export class Compbaser {
         if (window.location.href.indexOf('localhost') == -1)
             return;
         var annotations = Reflect.getMetadata('annotations', i_constructor);
+        if (!annotations)
+            return ''
         var componentMetadata = annotations.find(annotation => {
             return (annotation instanceof Component);
         });

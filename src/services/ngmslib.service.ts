@@ -4,11 +4,12 @@ import {Injectable} from "@angular/core";
 import {List, Map} from 'immutable';
 import * as ss from 'string';
 import * as _ from 'lodash';
-import * as moment_ from "moment";
+// import * as moment_ from "moment";
 import * as Immutable from "immutable";
-import {Component} from "@angular/core";
+// import {Component} from "@angular/core";
 import {Observable} from "rxjs";
-export const moment = moment_["default"];
+// export const moment = moment_["default"];
+import * as moment from 'moment'
 
 export declare module StringJS {}
 
