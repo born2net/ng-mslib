@@ -8,6 +8,7 @@ http://www.dzurico.com/how-to-create-an-angular-library/
 https://github.com/davguij/angular-npm-module-seed
 http://dbarnes.me/writing-an-aot-compliant-angular-library/
 https://github.com/gonzofish/angular-library-set
+https://angular-university.io/course/angular-advanced-course?utm=ml2-cimg&couponCode=ANGULAR_LIBRARY_LAB_PRELAUNCH
 
 ```
 npm i ng-mslib
